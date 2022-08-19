@@ -3,4 +3,6 @@
 use App\Http\Controllers\Status;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/status', [Status::class, 'status'])->middleware('web')->name('status');
+Route::domain('{site}.localhost')->group(function () {
+    Route::get('/', [Status::class, 'get'])->middleware('web')->name('status');
+});
